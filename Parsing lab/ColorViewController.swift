@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class ColorViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     let colors = [colorsOutput]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
