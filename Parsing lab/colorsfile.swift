@@ -13,18 +13,41 @@ enum JSONError: Error {
 }
 
 
-struct colorsOutput: Codable {
-    let mode: String
-    let count: Int
-    let colors: String
-    static func getcolors(from data: Data) throws -> [colorsOutput] {
+struct colorsModel: Codable {
+    let colors: [colorWrapper]
+}
+
+struct colorWrapper: Codable {
+    let hex: hexWrapper
+    let rgb: rgbWrapper
+    let name: nameWrapper
+    
+    static func getcolors(from data: Data) throws -> [colorWrapper] {
         do {
-            let colors = try JSONDecoder().decode([colorsOutput].self, from: data)
-            return colors
+            let colors = try JSONDecoder().decode(colorsModel.self, from: data)
+            return colors.colors
         } catch {
             throw JSONError.decodingError(error)
         }
-      
+        
     }
-    
 }
+
+struct hexWrapper: Codable {
+    let value: String
+}
+
+struct rgbWrapper: Codable {
+    let fraction: fractionUnwrapper    
+}
+
+struct fractionUnwrapper: Codable {
+    let r: Double
+    let g: Double
+    let b: Double
+}
+
+struct nameWrapper: Codable {
+    let value: String
+}
+

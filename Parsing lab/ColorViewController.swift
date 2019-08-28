@@ -12,7 +12,7 @@ class ColorViewController: UIViewController,UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
     
-    var colors = [colorsOutput]() {
+    var colors = [colorWrapper]() {
         didSet {
             tableView.reloadData()
         }
@@ -25,9 +25,15 @@ class ColorViewController: UIViewController,UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentColor = colors[indexPath.row]
+        
+        let redValue = CGFloat(currentColor.rgb.fraction.r)
+        let greenValue = CGFloat(currentColor.rgb.fraction.g)
+        let blueValue = CGFloat(currentColor.rgb.fraction.b)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell")
-        cell?.textLabel?.text = colors[indexPath.row].mode
-        cell?.detailTextLabel?.text = "colors\(colors[indexPath.row].colors)"
+        cell?.textLabel?.text = currentColor.name.value
+        cell?.backgroundColor = UIColor(displayP3Red: redValue, green: greenValue, blue: blueValue, alpha: 1)
         return cell!
     }
     
@@ -43,13 +49,13 @@ class ColorViewController: UIViewController,UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
     }
     private func loadData () {
-        guard let pathToData = Bundle.main.path(forResource: "colors", ofType: "json") else {
+        guard let pathToData = Bundle.main.path(forResource: "color", ofType: "json") else {
             fatalError("colors.json file not found")
         }
         let internalUrl = URL(fileURLWithPath: pathToData)
         do {
             let data = try Data(contentsOf: internalUrl)
-            let colorsFromJSON = try colorsOutput.getcolors(from: data)
+            let colorsFromJSON = try colorWrapper.getcolors(from: data)
             colors = colorsFromJSON
         }
         catch {
