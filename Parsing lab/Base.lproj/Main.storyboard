@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGz-qF-rjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5372" y="-1223"/>
+            <point key="canvasLocation" x="4914" y="-1268"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="MBb-oW-HdB">
@@ -144,7 +144,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vrq-qm-EVz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="vrq-qm-EVz">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vrq-qm-EVz" id="C6D-e3-d8Q">
@@ -166,7 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sRY-F4-Ksw"/>
                     <connections>
-                        <outlet property="userTableView" destination="jF4-Ax-9MH" id="dRP-g1-icK"/>
+                        <outlet property="userTableView" destination="jF4-Ax-9MH" id="1gL-r7-hx2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qw4-7V-b5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
